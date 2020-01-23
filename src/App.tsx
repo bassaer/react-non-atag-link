@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const handleClick = (query: string) => {
+        window.open(`https://www.google.com/search?q=${query}`);
+    }
+    const cities = ['Tokyo', 'NewYork', 'London'];
+    const rows = cities.map((city => {
+        return (
+            <div className="city" onClick={() => { handleClick(city) }}>
+                <p>{city}</p>
+            </div>
+        )
+    }));
+    return (
+        <div className="App">
+            {rows}
+        </div>
+    );
 }
 
 export default App;
